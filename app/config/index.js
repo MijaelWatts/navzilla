@@ -1,4 +1,4 @@
-'use strict' // Telling the browsers to execute the code strictly
+'use strict';
 
 var localConfig = {
   hostname: 'localhost',
