@@ -1,7 +1,7 @@
 'use strict';
 
+var config = require('./config');
 var server = require('./navzilla')();
-// var config = require('./config');
 
-// server.create(config);
+server.create(config);
 server.start();
