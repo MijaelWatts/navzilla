@@ -1,20 +1,32 @@
 'use strict';
 
 var express = require('express');
-var server  = express();
-
-// app.get('/index', (req, res) => res.send("Hello World"));
+var	app     = express();
 
 module.exports = function() {
-  // let server = express(), start;
+	var create, start;
 
-  var start = function() {
-        server.listen(3000, function () {
-            console.log('Express server listening on port 3000');
+	create = function(config) {
+		var routes = require('./routes');
+
+		app.set('hostname', config.hostname);
+		app.set('port', config.port);
+
+		routes.init(app);
+	};
+
+
+	start = function() {	
+		var hostname = app.get('hostname');
+		var port     = app.get('port');
+
+        app.listen(port, function () {
+            console.log("Express server listening on - http://" + hostname + ":" + port);
         });
     };
 
     return {
+        create: create,
         start: start
     };
-}
+};
